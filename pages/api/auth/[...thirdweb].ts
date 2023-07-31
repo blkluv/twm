@@ -1,5 +1,5 @@
-import { ThirdwebAuth } from "@thirdweb-dev/auth/next"
-import { PrivateKeyWallet } from "@thirdweb-dev/auth/evm"
+import { ThirdwebAuth } from '@thirdweb-dev/auth/next'
+import { PrivateKeyWallet } from '@thirdweb-dev/auth/evm'
 
 // NOTE: This users map is for demo purposes. Its used to show the power of
 // what you can accomplish with the Auth callbacks. In a production app,
@@ -8,8 +8,8 @@ import { PrivateKeyWallet } from "@thirdweb-dev/auth/evm"
 const users: Record<string, any> = {}
 
 export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
-  domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || "",
-  wallet: new PrivateKeyWallet(process.env.THIRDWEB_AUTH_PRIVATE_KEY || ""),
+  domain: process.env.NEXT_PUBLIC_THIRDWEB_AUTH_DOMAIN || '',
+  wallet: new PrivateKeyWallet(process.env.THIRDWEB_AUTH_PRIVATE_KEY || ''),
   // NOTE: All these callbacks are optional! You can delete this section and
   // the Auth flow will still work.
   callbacks: {
@@ -27,7 +27,7 @@ export const { ThirdwebAuthHandler, getUser } = ThirdwebAuth({
       }
 
       // We can also provide any session data to store in the user's session.
-      return { role: ["admin"] }
+      return { role: ['admin'] }
     },
     onUser: async (user) => {
       // Here we can run side-effects whenever a user is fetched from the client side

@@ -8,12 +8,20 @@ export const redis = new Redis({
 
 export const getListingsByRedis = async (count?: number) => {
   const redisKey = 'listings'
-  const listings = await redis.lrange(redisKey, 0, count !== undefined ? count : -1) as (AuctionListing | DirectListing)[]
+  const listings = (await redis.lrange(
+    redisKey,
+    0,
+    count !== undefined ? count : -1,
+  )) as (AuctionListing | DirectListing)[]
   return listings
 }
 
 export const getNFTsByRedis = async (count?: number) => {
   const redisKey = 'nfts'
-  const nfts = await redis.lrange(redisKey, 0, count !== undefined ? count : -1) as NFT[]
+  const nfts = (await redis.lrange(
+    redisKey,
+    0,
+    count !== undefined ? count : -1,
+  )) as NFT[]
   return nfts
 }

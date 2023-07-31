@@ -1,22 +1,22 @@
-import { Fragment } from "react"
-import { Transition, Dialog as HLDialog } from "@headlessui/react"
+import { Fragment } from 'react'
+import { Transition, Dialog as HLDialog } from '@headlessui/react'
 import {
   useCoinbaseWallet,
   useMetamask,
   useWalletConnect,
 } from '@thirdweb-dev/react'
-import WalletButton from "../button/wallet"
+import WalletButton from '../button/wallet'
 import IConMetaMask from '~/public/images/metamask-fox.svg'
 import IConWalletConnect from '~/public/images/walletconnect-alternative.webp'
 import IConCoinbaseWallet from '~/public/images/walletlink-alternative.webp'
-import { IconClose } from "../icons/close"
+import { IconClose } from '../icons/close'
 
 export interface IConnectDialogProps {
   isOpen: boolean
   closeModal: () => void
 }
 
-const ConnectDialog = ({ isOpen, closeModal, }: IConnectDialogProps) => {
+const ConnectDialog = ({ isOpen, closeModal }: IConnectDialogProps) => {
   const connectWithMetamask = useMetamask()
   const connectWithCoinbaseWallet = useCoinbaseWallet()
   const connectWithWalletConnect = useWalletConnect()
@@ -52,14 +52,17 @@ const ConnectDialog = ({ isOpen, closeModal, }: IConnectDialogProps) => {
                   className=" text-center text-lg font-bold"
                 >
                   Connect your wallet
-                  <span onClick={closeModal} className="float-right cursor-pointer justify-items-end pt-[2px]">
+                  <span
+                    onClick={closeModal}
+                    className="float-right cursor-pointer justify-items-end pt-[2px]"
+                  >
                     <IconClose />
                   </span>
                 </HLDialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    If you don&apos;t have a wallet, you can select a provider and
-                    create one now.{' '}
+                    If you don&apos;t have a wallet, you can select a provider
+                    and create one now.{' '}
                     <a
                       href="https://opensea.io/learn/what-is-crypto-wallet"
                       className="text-blue-500"

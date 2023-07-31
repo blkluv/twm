@@ -1,19 +1,23 @@
-import { NFT } from "@thirdweb-dev/sdk"
-import { GetServerSideProps, InferGetServerSidePropsType } from "next"
-import NFTList from "~/components/nft/nft-list"
-import { getNFTsByRedis } from "~/helper/redis"
+import { NFT } from '@thirdweb-dev/sdk'
+import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import NFTList from '~/components/nft/nft-list'
+import { getNFTsByRedis } from '~/helper/redis'
 
-export const getServerSideProps: GetServerSideProps<{ nfts: NFT[] }> = async (context) => {
+export const getServerSideProps: GetServerSideProps<{ nfts: NFT[] }> = async (
+  context,
+) => {
   const nfts = await getNFTsByRedis()
 
   return {
     props: {
-      nfts: nfts
-    }
+      nfts: nfts,
+    },
   }
 }
 
-const Category = ({ nfts }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Category = ({
+  nfts,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <>
       <section className="mt-10 mb-5 space-y-5">

@@ -2,11 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { redis } from '~/helper/redis'
 
 interface NftFavoriteCountResponseBody {
-  nftId: string;
-  count: number;
+  nftId: string
+  count: number
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const { method, query } = req
   const { nftId } = query
 

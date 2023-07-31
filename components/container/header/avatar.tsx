@@ -26,7 +26,7 @@ const AvatarPopoverItem = ({ children }: { children: React.ReactNode }) => {
 const Avatar = ({ address }: { address: string }) => {
   const disconnect = useDisconnect()
   return (
-    <div >
+    <div>
       <Menu as="div" className="relative text-left">
         <Menu.Button className="flex">
           <AvatarImage address={address} />
@@ -40,8 +40,10 @@ const Avatar = ({ address }: { address: string }) => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute -right-8 mt-2 w-28 origin-top-right divide-y overflow-hidden rounded-md border text-center
-        font-semibold shadow dark:divide-gray-500 dark:border-gray-500 dark:shadow-gray-800">
+          <Menu.Items
+            className="absolute -right-8 mt-2 w-28 origin-top-right divide-y overflow-hidden rounded-md border text-center
+        font-semibold shadow dark:divide-gray-500 dark:border-gray-500 dark:shadow-gray-800"
+          >
             <Menu.Item>
               <AvatarPopoverItem>
                 <Link href="/profile">Profile</Link>
@@ -52,11 +54,10 @@ const Avatar = ({ address }: { address: string }) => {
                 <button onClick={disconnect}>Log out</button>
               </AvatarPopoverItem>
             </Menu.Item>
-          </Menu.Items >
+          </Menu.Items>
         </Transition>
-      </Menu >
+      </Menu>
     </div>
-
   )
 }
 

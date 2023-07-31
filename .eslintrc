@@ -1,9 +1,6 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:tailwindcss/recommended"
-],
+  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended"],
   "rules": {
-    "semi":  ["warn","never"]
+    "semi": ["warn", "never"]
   }
 }

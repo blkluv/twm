@@ -11,10 +11,13 @@ export interface INFTwithPrice {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { query } = req
   const id = query.id as string
-  const nfts = await redis.lrange('nfts', 0, -1) as NFT[]
-  const listings = await redis.lrange('listings', 0, -1) as (AuctionListing | DirectListing)[]
-  const nft = nfts.find(item => item.metadata.id === id) as NFT
-  const isSales = listings.find(item => item.asset.id === nft.metadata.id)
+  const nfts = (await redis.lrange('nfts', 0, -1)) as NFT[]
+  const listings = (await redis.lrange('listings', 0, -1)) as (
+    | AuctionListing
+    | DirectListing
+  )[]
+  const nft = nfts.find((item) => item.metadata.id === id) as NFT
+  const isSales = listings.find((item) => item.asset.id === nft.metadata.id)
 
   let _nft: INFTwithPrice = {} as INFTwithPrice
   _nft.nft = nft

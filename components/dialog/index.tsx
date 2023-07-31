@@ -1,5 +1,5 @@
-import { Fragment } from "react"
-import { Transition, Dialog as HLDialog } from "@headlessui/react"
+import { Fragment } from 'react'
+import { Transition, Dialog as HLDialog } from '@headlessui/react'
 
 export interface IDialogProps {
   isOpen: boolean
@@ -10,7 +10,14 @@ export interface IDialogProps {
   confirmText: string
 }
 
-const Dialog = ({ isOpen, closeModal, title, desc, confirm, confirmText }: IDialogProps) => {
+const Dialog = ({
+  isOpen,
+  closeModal,
+  title,
+  desc,
+  confirm,
+  confirmText,
+}: IDialogProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <HLDialog as="div" className="relative z-10" onClose={closeModal}>
@@ -45,9 +52,7 @@ const Dialog = ({ isOpen, closeModal, title, desc, confirm, confirmText }: IDial
                   {title}
                 </HLDialog.Title>
                 <div className="mt-2">
-                  <p className="text-sm text-gray-500">
-                    {desc}
-                  </p>
+                  <p className="text-sm text-gray-500">{desc}</p>
                 </div>
 
                 <div className="mt-6 space-x-5">

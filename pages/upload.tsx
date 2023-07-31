@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import UploadForm from '~/components/page-ui/upload-form'
 
-
 const Upload: NextPage = () => {
   return (
     <>

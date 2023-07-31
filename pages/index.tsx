@@ -10,28 +10,34 @@ import { getListingsByRedis, getNFTsByRedis } from '~/helper/redis'
 import { INFT } from '~/helper/types'
 import HomeDemoPng from '~/public/images/homedemo.png'
 
-export const getServerSideProps: GetServerSideProps<{ listing: INFT[], nft: NFT[] }> = async (context) => {
+export const getServerSideProps: GetServerSideProps<{
+  listing: INFT[]
+  nft: NFT[]
+}> = async (context) => {
   const listings = await getListingsByRedis(5)
   const nfts = await getNFTsByRedis(5)
 
-  const _listing: INFT[] = listings.map(item => {
+  const _listing: INFT[] = listings.map((item) => {
     return {
       id: item.id,
       tokenId: item.asset.id,
       image: item.asset.image,
       name: item.asset.name,
-      price: item.buyoutCurrencyValuePerToken.displayValue
+      price: item.buyoutCurrencyValuePerToken.displayValue,
     }
   })
   return {
     props: {
       listing: _listing,
-      nft: nfts
-    }
+      nft: nfts,
+    },
   }
 }
 
-function Home({ listing, nft }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+function Home({
+  listing,
+  nft,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const address = useAddress()
   return (
     <>
@@ -70,21 +76,24 @@ function Home({ listing, nft }: InferGetServerSidePropsType<typeof getServerSide
       </section>
       <section>
         <NFTList list={nft} title="New Creations" />
-        <div className='flex justify-center'>
+        <div className="flex justify-center">
           <Link href="/creation">
-            <button className='flex h-full items-center rounded-full bg-blue-500 p-2 px-4 text-lg font-semibold text-white hover:bg-blue-400'>View More</button>
+            <button className="flex h-full items-center rounded-full bg-blue-500 p-2 px-4 text-lg font-semibold text-white hover:bg-blue-400">
+              View More
+            </button>
           </Link>
         </div>
       </section>
       <section>
         <SaleList list={listing} title="New Listings" />
-        <div className='flex justify-center'>
+        <div className="flex justify-center">
           <Link href="/market">
-            <button className='flex h-full items-center rounded-full bg-blue-500 p-2 px-4 text-lg font-semibold text-white hover:bg-blue-400'>View More</button>
+            <button className="flex h-full items-center rounded-full bg-blue-500 p-2 px-4 text-lg font-semibold text-white hover:bg-blue-400">
+              View More
+            </button>
           </Link>
         </div>
       </section>
-
     </>
   )
 }

@@ -16,9 +16,7 @@ const Provider = ({ children }: { children: React.ReactNode }) => {
       }}
     >
       <ThemeProvider attribute="class">
-        <SWRConfig value={{ fetcher }}>
-          {children}
-        </SWRConfig>
+        <SWRConfig value={{ fetcher }}>{children}</SWRConfig>
       </ThemeProvider>
     </ThirdwebProvider>
   )

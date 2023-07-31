@@ -10,7 +10,7 @@ const ConnectButton = ({ className }: { className?: string }) => {
         onClick={() => setOpen(true)}
         className={clsx(
           'rounded-full border p-2 px-4 font-semibold hover:bg-gray-200 dark:border-gray-500 dark:hover:bg-gray-900',
-          className
+          className,
         )}
       >
         Connect Wallet

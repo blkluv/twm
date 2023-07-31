@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { redis } from '~/helper/redis'
 
 interface FavoriteRequestBody {
-  nftId?: string;
+  nftId?: string
 }
 
 function validateRequestBody(body: FavoriteRequestBody) {
@@ -11,7 +11,10 @@ function validateRequestBody(body: FavoriteRequestBody) {
   }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const { method, body, query } = req
 
   const userId = query.userId as string
@@ -19,7 +22,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ message: 'Missing required field: userId' })
   }
   try {
-
     const favoriteKey = `favorite:${userId}`
     const nftId = body.nftId
 

@@ -1,7 +1,9 @@
 import useSWR from 'swr'
 
 export const useFav = (address: string) => {
-  const { data, mutate } = useSWR<{ data: string[] }>(address ? `/api/fav?userId=${address}` : null,)
+  const { data, mutate } = useSWR<{ data: string[] }>(
+    address ? `/api/fav?userId=${address}` : null,
+  )
 
   const fav = (nftId: string) => {
     if (data) {
@@ -13,7 +15,7 @@ export const useFav = (address: string) => {
           },
           body: JSON.stringify({ userId: address, nftId }),
         })
-        const data = await res.json() as string[]
+        const data = (await res.json()) as string[]
         return { data }
       }
 
@@ -25,7 +27,7 @@ export const useFav = (address: string) => {
             return { data: [] }
           }
         },
-        rollbackOnError: true
+        rollbackOnError: true,
       })
     }
   }
@@ -40,7 +42,7 @@ export const useFav = (address: string) => {
           },
           body: JSON.stringify({ userId: address, nftId }),
         })
-        const data = await res.json() as string[]
+        const data = (await res.json()) as string[]
         return { data }
       }
       mutate(updateFn(nftId), {
@@ -51,7 +53,7 @@ export const useFav = (address: string) => {
             return { data: [] }
           }
         },
-        rollbackOnError: true
+        rollbackOnError: true,
       })
     }
   }

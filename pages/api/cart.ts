@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { redis } from '~/helper/redis'
 
 interface CartRequestBody {
-  cart: string[];
+  cart: string[]
 }
 
 function validateId(id: string) {
@@ -17,7 +17,10 @@ function validateRequestBody(body: CartRequestBody) {
   }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const { method, body, query } = req
   const id = query.id as string
 

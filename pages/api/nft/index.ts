@@ -6,23 +6,21 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, body, query } = req
 
   switch (method) {
-    case "GET": {
+    case 'GET': {
       const owner = query.owner as string
       const redisKey = 'nfts'
 
-      const nfts = await redis.lrange(redisKey, 0, -1) as NFT[]
+      const nfts = (await redis.lrange(redisKey, 0, -1)) as NFT[]
       if (!owner) {
         return res.status(200).json({
-          nfts
+          nfts,
         })
       } else {
         return res.status(200).json({
-          nfts: nfts.filter(nft => nft.owner === owner)
+          nfts: nfts.filter((nft) => nft.owner === owner),
         })
       }
-
     }
-
   }
 }
 

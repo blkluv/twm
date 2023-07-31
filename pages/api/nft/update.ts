@@ -9,7 +9,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   await redis.del(redisKey)
   await redis.lpush(redisKey, ...nfts)
   return res.status(200).json({
-    nfts
+    nfts,
   })
 }
 

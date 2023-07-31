@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { redis } from '~/helper/redis'
 
 interface UserRequestBody {
-  avatarUrl?: string;
-  username?: string;
+  avatarUrl?: string
+  username?: string
 }
 
 function validateRequestBody(body: UserRequestBody) {
@@ -12,7 +12,10 @@ function validateRequestBody(body: UserRequestBody) {
   }
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   const { method, body, query } = req
   const id = query.id as string
 
